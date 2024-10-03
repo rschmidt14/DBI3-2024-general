@@ -1,0 +1,4 @@
+git clone https://github.com/rschmidt14/DBI3-2024-general.git
+git add filename
+git commit -m "added sql and git example file"
+git push origin main
