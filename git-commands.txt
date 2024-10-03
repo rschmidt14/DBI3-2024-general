@@ -1,4 +1,6 @@
 git clone https://github.com/rschmidt14/DBI3-2024-general.git
 git add filename
+git status
 git commit -m "added sql and git example file"
+git remote set-url origin https://rschmidt14@github.com/rschmidt14/DBI3-2024-general
 git push origin main
