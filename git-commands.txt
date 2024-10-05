@@ -13,3 +13,4 @@ git checkout -b kuerzel
 git push origin kuerzel
 git branch
 git branch -r
+git merge smir
