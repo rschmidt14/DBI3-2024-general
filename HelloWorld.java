@@ -12,13 +12,13 @@ class HelloWorld {
         }
 
         if (iFlag) {
-            Scanner myObj = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             System.out.println("What's your name?");
 
-            String userName = myObj.nextLine();
-            System.out.println("Hello " + userName + "!"); // Output user input
+            String name = scanner.nextLine();
+            System.out.println("Hello " + name + "!");
 
-            myObj.close();
+            scanner.close();
         } else {
             System.out.println("Hello World!");
         }
