@@ -3,10 +3,10 @@ import java.util.Scanner;
 class HelloWorld {
     public static void main(String[] args) {
         if (args.length > 0 && args[0].equals("i")) {
-            Scanner myObject = new Scanner(System.in);
+            Scanner userName = new Scanner(System.in);
             System.out.println("What's your name?");
 
-            String name = myObject.nextLine();
+            String name = userName.nextLine();
             System.out.println("Hello " + name +"!");
 
         } else {
