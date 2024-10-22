@@ -1,5 +1,3 @@
-package org.smir;
-
 import java.util.Scanner;
 
 public class App {
@@ -18,7 +16,7 @@ public class App {
             }
             
         } else {
-            System.out.println("Hello World");;
+            System.out.println("Hello World");
         }
     }
 }
