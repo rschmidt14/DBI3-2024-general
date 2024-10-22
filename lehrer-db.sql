@@ -42,3 +42,4 @@ insert into S values
 (3, 2, 'BORG Braunau')
 ;
 
+-- die namen aller lehrer und schulen 
