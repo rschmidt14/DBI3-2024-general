@@ -1,21 +1,18 @@
 
-// import java.util.scanner;
 
-class HelloWorld{
-
-
-    public static void main(String [] args) {
-
-        system.out.println("Hello World");
-    }
-};
+import java.util.Scanner;
 
 class Main {
-    public static void main(String[] args) {
-      Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-      System.out.println("wossogga");
-  
-      String userName = myObj.nextLine();  // Read user input
-      System.out.println("Username is: " + userName);  // Output user input
-    }
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    String userName;
+    
+    // Enter username and press Enter
+    System.out.println("Wie heißt du?"); 
+    userName = myObj.nextLine();   
+       
+    System.out.println("Servus "  + userName);     
+    
+    
   }
+}
