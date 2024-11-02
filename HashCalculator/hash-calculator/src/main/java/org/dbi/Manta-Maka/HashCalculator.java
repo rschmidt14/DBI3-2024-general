@@ -1,9 +1,9 @@
-package org.dbi.Manta-Maka;
+package org.dbi.MantaMaka;
 
 /**
  * Hello world!
  */
-public class App {
+public class HashCalculator {
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
