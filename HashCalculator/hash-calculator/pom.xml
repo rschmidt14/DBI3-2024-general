@@ -17,7 +17,6 @@
   </properties>
 
   <dependencies>
-    <!-- JUnit Jupiter API mit Version 5.9.1 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -25,7 +24,6 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- JUnit Jupiter Params mit Version 5.9.1 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
@@ -36,7 +34,6 @@
 
   <build>
     <plugins>
-      <!-- Maven Compiler Plugin (Version 3.13.0) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -47,7 +44,6 @@
         </configuration>
       </plugin>
 
-      <!-- Maven Assembly Plugin (Version 3.7.1) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
