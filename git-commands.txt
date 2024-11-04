@@ -1,0 +1,16 @@
+#create personal access token
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+git clone https://github.com/rschmidt14/DBI3-2024-general.git
+git add filename
+git status
+git commit -m "added sql and git example file"
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+git remote set-url origin https://rschmidt14@github.com/rschmidt14/DBI3-2024-general
+git push origin main
+git checkout -b kuerzel
+git push origin kuerzel
+git branch
+git branch -r
+git merge smir
