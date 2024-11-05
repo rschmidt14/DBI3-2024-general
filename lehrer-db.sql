@@ -73,7 +73,26 @@ select * from l
 union
 select * from s);
 
-
 select id from l
 union
 select typ from schule;
+
+-- Mengendifferenz ... except 
+select * from l 
+except
+select * from s;
+
+select name from l 
+except
+select name from s;
+
+select distinct pendler from l;
+select distinct pendler from s;
+
+select pendler from l 
+except
+select pendler from s;
+
+select pendler from l 
+union
+select pendler from s;
