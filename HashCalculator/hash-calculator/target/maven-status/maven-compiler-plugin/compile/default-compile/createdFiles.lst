@@ -1,1 +1,5 @@
-org/dbi/MantaMaka/HashCalculator.class
+org/dbi/Manta_Maka/HelloHashing.class
+org/dbi/Manta_Maka/GuavaHashGenerator.class
+org/dbi/Manta_Maka/CommonsHashGenerator.class
+org/dbi/Manta_Maka/HashGenerator.class
+org/dbi/Manta_Maka/ParentHashGenerator.class

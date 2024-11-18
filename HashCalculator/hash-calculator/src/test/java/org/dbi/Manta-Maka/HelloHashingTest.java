@@ -1,4 +1,4 @@
-package org.dbi.Manta-Maka;
+package org.dbi.Manta_Maka;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

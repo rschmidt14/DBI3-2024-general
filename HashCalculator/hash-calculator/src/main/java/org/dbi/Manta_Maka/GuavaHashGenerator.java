@@ -1,4 +1,4 @@
-package org.dbi.Manta-Maka;
+package org.dbi.Manta_Maka;
 
 import com.google.common.hash.Hashing;
 import java.nio.charset.StandardCharsets;

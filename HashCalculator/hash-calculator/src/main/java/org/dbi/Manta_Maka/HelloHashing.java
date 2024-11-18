@@ -1,9 +1,8 @@
-package org.dbi.Manta-Maka;
+package org.dbi.Manta_Maka;
 
 import java.util.Scanner;
-
-import org.dbi.smir.security.GuavaHashGenerator;
-import org.dbi.smir.security.HashGenerator;
+import org.dbi.Manta_Maka.GuavaHashGenerator;
+import org.dbi.Manta_Maka.HashGenerator;
 
 public class HelloHashing {
     public static void main(String[] args) {

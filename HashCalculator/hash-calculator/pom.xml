@@ -17,6 +17,21 @@
   </properties>
 
   <dependencies>
+    <!-- Guava für Hashing -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.3.1-jre</version>
+    </dependency>
+
+    <!-- Commons Codec für SHA-256 -->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.17.1</version>
+    </dependency>
+
+    <!-- JUnit für Tests -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -30,60 +45,30 @@
       <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>33.3.1-jre</version>
-    </dependency>
-
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>1.17.1</version>
-    </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <!-- Exec Plugin zur Ausführung der main-Klasse -->
       <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>3.4.0</version>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>org.dbi.Manta_Maka.HelloHashing</mainClass> <!-- Hier die mainClass angeben -->
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
+
+      <!-- Plugin zur Erstellung des JAR-Files mit Abhängigkeiten -->
       <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.3.1</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.3.0</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.4.2</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-install-plugin</artifactId>
-        <version>3.1.2</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>3.1.2</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.12.1</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.6.1</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.3.0</version>
         <executions>
@@ -95,7 +80,7 @@
             <configuration>
               <archive>
                 <manifest>
-                  <mainClass>org.dbi.MantaMaka.HashCalculator</mainClass>
+                  <mainClass>org.dbi.Manta_Maka.HelloHashing</mainClass>
                 </manifest>
               </archive>
               <descriptorRefs>
@@ -104,6 +89,12 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <!-- Compiler Plugin -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
       </plugin>
     </plugins>
   </build>

@@ -1,1 +1,5 @@
-/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator/hash-calculator/src/main/java/org/dbi/Manta-Maka/HashCalculator.java
+/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator/hash-calculator/src/main/java/org/dbi/Manta_Maka/CommonsHashGenerator.java
+/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator/hash-calculator/src/main/java/org/dbi/Manta_Maka/GuavaHashGenerator.java
+/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator/hash-calculator/src/main/java/org/dbi/Manta_Maka/HashGenerator.java
+/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator/hash-calculator/src/main/java/org/dbi/Manta_Maka/HelloHashing.java
+/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator/hash-calculator/src/main/java/org/dbi/Manta_Maka/ParentHashGenerator.java
