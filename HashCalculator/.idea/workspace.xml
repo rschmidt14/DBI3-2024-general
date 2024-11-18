@@ -16,9 +16,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/hash-calculator/src/main/java/org/dbi/Manta-Maka/HashCalculator.java" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2oIRfCY7h1TsCVGiI3RbIg2RLxL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +29,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Kahr",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/john/Dokumente/HTL/DBI/Projekt/DBI3-2024-general/HashCalculator"
+    "last_opened_file_path": "/home/john/Dokumente/HTL/DBI/Hashcalculator/hellohashing-aufgabe3"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
