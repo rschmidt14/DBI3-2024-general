@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class HelloHashingTest {
 
-    /*
+
     @Test
     public void shouldAnswerWithTrue() {
         assertTrue(true);
@@ -21,8 +21,9 @@ public class HelloHashingTest {
     public void SHA256equalityTest() {
 
         String guava = (new GuavaHashGenerator()).generateSha256Hex("myPassword");
+        String commons = (new CommonsHashGenerator()).generateSha256Hex("myPassword");
         //not sure that this is a correct unit test??!
-        assertTrue(guava.equals("myPassword"));
+        assertTrue(guava.equals(commons));
     }
-    */
+
 }
