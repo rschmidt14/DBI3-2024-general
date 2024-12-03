@@ -1,0 +1,5 @@
+org\dbi\smir\security\HashGenerator.class
+org\dbi\smir\security\CommonsHashGenerator.class
+org\dbi\smir\security\GuavaHashGenerator.class
+org\dbi\smir\security\ParentHashGenerator.class
+org\dbi\smir\HelloHashing.class
