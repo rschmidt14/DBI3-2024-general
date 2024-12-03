@@ -1,0 +1,5 @@
+org\dbi\Jani\HashCalculator.class
+org\dbi\Jani\CommonsHashGenerator.class
+org\dbi\Jani\ParentHashGenerator.class
+org\dbi\Jani\HashGenerator.class
+org\dbi\Jani\GuavaHashGenerator.class
