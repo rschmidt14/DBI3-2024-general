@@ -126,18 +126,56 @@ select lname as name from l
 union
 select fach as name from lv;
 
+select lname as name from l;
+select fach as name from lv;
+
+-- l[lid, lname, lalter, lpendler]
+select * from l;
+-- s[sid, sname, salter, spendler, kv]
+select * from s;
+-- lv[id, fach, stunden, jahr]
+select * from lv;
+
 -- der kv welcher schüler ist 'Gabi'
--- alle schülernamen, alter, und kvnamen
--- die namen aller pender (schüler und lehrer)
+select sname from l, s where lid = kv and lname = 'Gabi';
+select sname from s where kv in (select lid from l where lname = 'Gabi'); 
+
+-- alle schülernamen, alter v. l und s, und kvnamen
+select sname, s.alter, lname, l.alter from l, s where lid = kv;
+
+-- Gesucht ist eine Tabelle (Name), die die Namen aller...
+-- die namen aller pendler (schüler und lehrer)
+select sname as name from s where pendler = true
+union 
+select lname as name from l where pendler = true;
+
+select sname as name from s where pendler = true;
+select lname as name from l where pendler = true;
+
 -- alle lehrer die ein fach unterrichten (mit unterabfrage, mit kreuzprodukt)
+select * from l, lv;
+select distinct lname from l, lv where l.lid = lv.id;
+
 select * from lv;
 select distinct id from lv;
 select * from l;
 select * from l where lid in (select id from lv);
 select lname from l where lid in (select id from lv);
--- alle lehrer die kein fach unterrichten
--- alle fächer mit namen der unterrichtenden lehrer
+-- alle lehrer (name) die kein fach unterrichten
+select lname from l
+except
+select lname from l, lv where l.lid = lv.id;
+
+select lname from l where lid not in (select id from lv);
+
+-- alle fächer mit namen der unterrichtenden lehrer (name, fach)
+select lname as name, fach from l,lv where lid = id;
+
+-- alle fächer mit namen der unterrichtenden lehrer (name, fach) im jahr 2022
+
 -- alle lehrer die kv sind
+select distinct lname from l, s where l.lid = s.kv;
+-- alle lehrere die keine kv sind
 
 -- name, lalter, salter bei namensgleichheit
 select sname, s.alter, l.alter from s, l where sname = lname;
