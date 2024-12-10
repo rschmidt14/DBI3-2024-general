@@ -186,3 +186,208 @@ select * from country;
 
 select i.name, o.name, o.population from city i, country o;
 select city.name, country.name, country.population from city, country where country.code = city.country and city.name = 'Adamstown';
+
+-- Mengendurchschnitt 
+-- R ∩ S = R - (R-S)
+
+select name from l;
+select name from s;
+
+select name from l 
+intersect
+select name from s;
+
+select name from l
+except
+(select name from l 
+except
+select name from s)
+;
+
+select * from s;
+select * from l;
+select * from l,lv where l.lid = lv.id;
+select sname, lname, fach, jahr from l,lv,s where 
+l.lid = lv.id and
+s.kv = l.lid;
+
+select * from l join lv on l.id = lv.id;
+
+select sname, lname, fach, jahr from l 
+join lv on l.lid = lv.id
+join s on s.kv = l.lid;
+
+---=====
+
+drop table if exists lv cascade;
+drop table if exists s cascade;
+drop table if exists l cascade;
+drop table if exists u cascade;
+drop table if exists kv cascade;
+
+create table L (
+  id int primary key,
+  name text,
+  ALTER int,
+  pendler bool  
+);
+
+create table LV (
+  id int primary key,
+  fach char,
+  stunden int,
+  jahr int
+);
+
+-- unterrichtet
+create table S (
+  id int primary key,
+  name text,
+  alter int,
+  pendler bool
+);
+
+create table KV (
+  sid int references s,
+  lid int references l,
+  constraint pk primary key (sid,lid)
+);
+
+insert into l values
+(1, 'Max', 25, true),
+(2, 'Fritz', 31, false),
+(3, 'Gabi', 31, true),
+(4, 'Moritz', 33, false);
+
+insert into lv values 
+(1, 'D', 4, 2022),
+(2, 'E', 4, 2022),
+(3, 'E', 6, 2022),
+(4, 'D', 2, 2022),
+(5, 'D', 6, 2023);
+
+create table U (
+  lid int references l, 
+  lvid int references lv primary key
+);
+
+insert into s values
+(10, 'Susi', 15, false),
+(20, 'Sepp', 16, false),
+(30, 'Max', 16, true);
+
+insert into kv values (10, 1), (20, 3), (30, 3);
+insert into u values (1, 1), (1, 2),(2, 3),(3, 4), (3,5);
+
+-- alle lehrer die ein fach unterrichten mit x und join
+select l.name, lv.fach, lv.jahr from u 
+join l on u.lid = l.id 
+join lv on lvid = lv.id
+where lv.jahr = 2022;
+
+select l.name, lv.fach, lv.jahr from l, lv, u 
+where u.lid = l.id 
+and u.lvid = lv.id
+and lv.jahr = 2022;
+
+-- mögliche paarungen für fahrgemeinschaften
+select * from l;
+update l set pendler = true where name = 'Fritz';
+
+select * from l;
+select fahrer.name fahrer, beifahrer.name as beifahrer from l as fahrer, l as beifahrer
+where 
+--fahrer.id != beifahrer.id and 
+fahrer.pendler = true and 
+beifahrer.pendler = true and
+fahrer.id > beifahrer.id;
+
+select fahrer.name fahrer, beifahrer.name as beifahrer from l as fahrer 
+join l as beifahrer on 
+--fahrer.id != beifahrer.id and
+fahrer.pendler = true and 
+beifahrer.pendler = true and
+fahrer.id > beifahrer.id;
+
+select fahrer.name fahrer, beifahrer.name as beifahrer from l as fahrer 
+join l as beifahrer on fahrer.id > beifahrer.id
+where 
+fahrer.pendler = true and 
+beifahrer.pendler = true;
+
+--
+-- vorgänger 
+truncate v;
+insert into v values
+('Max', 'Erich'),
+('Gabi', 'Fritz'),
+('Erich', 'Moritz'),
+('Fritz', 'Hansi')
+;
+select * from v;
+
+-- sch(VV) = [vvg, vg, nf]
+select v1.vg as vvg, v2.vg as vg, v2.nf as nf from v as v1, v as v2
+where v1.nf = v2.vg;
+
+
+-- bsp kundensegment
+drop table if exists kunde;
+drop table if exists segment;
+
+-- kdnr, vn, nn, alter
+create table kunde (
+  name text,
+  alter int
+);
+
+-- id, alter, typ, naechster
+create table segment (
+  alter int,
+  typ text
+);
+
+insert into kunde values
+('Basti', 11),
+('Kevin', 15),
+('Ernst', 25),
+('Max', 35),
+('Susi', 45),
+('Gabi', 55);
+
+insert into kunde values ('Baby', 1);
+
+insert into segment values
+(2, 'Baby'),
+(12, 'Kind'),
+(25, 'Jung'),
+(50, 'Mittel'),
+(80, 'Alt');
+
+insert into segment values (13, 'Kind');
+
+select * from kunde;
+select * from segment;
+
+-- Alle Kunden im Segment Kind inkl. Babies
+-- x
+select * from kunde k, segment s where s.typ = 'Kind';
+select * from kunde k, segment s where k.alter <= s.alter
+and s.typ = 'Kind';
+
+-- join
+select * from kunde k join segment s on k.alter <= s.alter
+and s.typ = 'Kind';
+
+-- subselect
+select alter from segment where typ = 'Kind';
+select * from kunde where alter <= (select alter from segment where typ = 'Kind');
+select * from kunde where alter <= any (select alter from segment where typ = 'Kind');
+select * from kunde where alter <= all (select alter from segment where typ = 'Kind');
+
+-- Hausübung
+-- Finde alle jungen Kunden (exkl Kinder) mit kreuzprodukt bzw join
+-- Finde alle jungen Kunden (exkl Kinder) mit kreuzprodukt mit subselect
+
+
+
