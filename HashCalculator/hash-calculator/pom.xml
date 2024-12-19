@@ -56,7 +56,7 @@
         <version>3.5.0</version>
         <executions>
           <execution>
-            <phase>compile</phase>
+            <phase>exec</phase>
             <goals>
               <goal>java</goal>
             </goals>

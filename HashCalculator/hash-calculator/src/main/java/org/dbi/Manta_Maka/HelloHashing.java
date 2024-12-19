@@ -30,5 +30,6 @@ public class HelloHashing {
         //System.out.println("Hash ("+args[0]+") is: " + hashGenerator.generateSha256Hex(password));
         System.out.println("Hash is: " + hashGenerator.generateSha256Hex(password));
 
+        scanner.close();
     }
 }
