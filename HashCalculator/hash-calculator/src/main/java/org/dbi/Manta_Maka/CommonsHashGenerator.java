@@ -9,4 +9,3 @@ public class CommonsHashGenerator extends ParentHashGenerator
     {
         return DigestUtils.sha256Hex(source);
     }
-}
