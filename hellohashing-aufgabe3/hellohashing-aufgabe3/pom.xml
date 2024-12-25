@@ -38,6 +38,11 @@
     <artifactId>guava</artifactId>
     <version>32.1.3-jre</version>
     </dependency>
+     <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.15</version> <!-- Achte darauf, die neueste Version zu verwenden -->
+    </dependency>
   </dependencies>
 
   <build>
