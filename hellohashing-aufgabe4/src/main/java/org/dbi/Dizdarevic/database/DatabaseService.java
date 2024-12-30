@@ -1,11 +1,11 @@
-package org.dbi.smir.database;
+package org.dbi.Dizdarevic.database;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.dbi.smir.model.User;
+import org.dbi.Dizdarevic.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
