@@ -35,7 +35,7 @@ public class ConnectionFactory
 
         try
         {
-            con = DriverManager.getConnection(props.getProperty("url"), props);
+            con = DriverManager.getConnection(props.getProperty("jbdc:postgres"), props);
             con.setAutoCommit(false);
             LOG.info("Connection: " + con);
         }
