@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="489bdfaf-7a81-4202-877f-5049a0018e9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/HashCalculator/target/classes/com/example/HashCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/HashCalculator/target/classes/com/example/HashCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HashCalculator/target/test-classes/com/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/HashCalculator/target/test-classes/com/example/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +15,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2oRZZFPpn8MfuFKzf0ZcgvCmxUp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,7 +29,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Manuel",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/manue/OneDrive/HTL/6.Klasse/Datenbanken/DBI3-2024-general",
+    "last_opened_file_path": "C:/Users/manue/OneDrive/HTL/6.Klasse/Datenbanken/DBI3-2024-general/Aufgabe3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -63,6 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730834402090</updated>
       <workItem from="1730834403119" duration="54000" />
+      <workItem from="1733251664119" duration="770000" />
     </task>
     <servers />
   </component>
