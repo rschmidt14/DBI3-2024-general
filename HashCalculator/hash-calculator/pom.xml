@@ -38,7 +38,16 @@
       <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.6.0</version> <!-- Ersetzen Sie die Version mit der gewünschten oder aktuellen -->
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
