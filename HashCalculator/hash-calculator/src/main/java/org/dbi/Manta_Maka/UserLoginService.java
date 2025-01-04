@@ -1,27 +1,24 @@
 package org.dbi.Manta_Maka;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class UserLoginService {
 
     public static boolean login(String username, String password) {
-        String query = "SELECT password_hash FROM users WHERE username = ?";
-        try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, username);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    String hashedPassword = resultSet.getString("password_hash");
-                    return BCryptHelper.checkPassword(password, hashedPassword);
-                }
+        try (Connection connection = ConnectionFactory.getConnection()) {
+            UserService userService = new UserService(connection);
+
+            // Benutzer suchen
+            User user = userService.findUserByUsername(username);
+            if (user == null) {
+                return false; // Benutzer nicht gefunden
             }
-        } catch (SQLException e) {
+
+            // Passwort überprüfen
+            return BCryptHelper.checkPassword(password, user.getPasswordHash());
+        } catch (Exception e) {
             e.printStackTrace();
-            // Optional: Log the error or rethrow it
+            return false; // Fehler beim Login
         }
-        return false; // Login failed
     }
 }

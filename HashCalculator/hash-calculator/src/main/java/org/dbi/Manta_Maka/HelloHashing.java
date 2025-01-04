@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class HelloHashing {
     public static void main(String[] args) {
 
-        // Deklaration des HashGenerators
+        // HashGenerator
         HashGenerator hashGenerator = null;
         if (args != null && args.length == 1 && args[0].equalsIgnoreCase("Guava")) {
             hashGenerator = new GuavaHashGenerator();
@@ -20,7 +20,7 @@ public class HelloHashing {
             return;
         }
 
-        // Scanner nur einmal deklarieren
+        // Scanner
         Scanner scanner = new Scanner(System.in);
 
         // Benutzername und Passwort einlesen
@@ -30,7 +30,7 @@ public class HelloHashing {
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        // Hashing für Playground und Standard-SHA256
+        // Hashing
         System.out.println("Playground Hash is: " + hashGenerator.generatePlaygroundHash(password));
         System.out.println("Hash is: " + hashGenerator.generateSha256Hex(password));
 
@@ -38,60 +38,68 @@ public class HelloHashing {
         try (Connection connection = ConnectionFactory.getConnection()) {
             if (connection != null) {
                 System.out.println("Verbindung zur Datenbank erfolgreich hergestellt!");
-            }
-        } catch (SQLException e) {
-            System.err.println("Fehler beim Herstellen der Verbindung: " + e.getMessage());
-            e.printStackTrace();
-        }
 
-        // Benutzerregistrierung
-        try (Connection connection = ConnectionFactory.getConnection()) {
-            UserService userService = new UserService(connection);
+                // Benutzerregistrierung
+                registerUser(scanner, connection);
 
-            System.out.println("=== Benutzer Registrierung ===");
-
-            System.out.print("Benutzernamen eingeben: ");
-            String username = scanner.nextLine().trim();
-
-            System.out.print("Passwort eingeben: ");
-            String userPassword = scanner.nextLine();
-
-            // Passwort hashen
-            String passwordHash = BCryptHelper.hashPassword(userPassword);
-
-            // Benutzer speichern
-            User user = new User(username, passwordHash);
-            userService.saveUser(user);
-
-            System.out.println("Registrierung erfolgreich!");
-        } catch (SQLException e) {
-            System.err.println("Fehler bei der Datenbankverbindung: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        // Benutzer-Login
-        try (Connection connection = ConnectionFactory.getConnection()) {
-            System.out.println("=== Benutzer Login ===");
-
-            System.out.print("Benutzernamen eingeben: ");
-            String username = scanner.nextLine().trim();
-
-            System.out.print("Passwort eingeben: ");
-            String userPassword = scanner.nextLine();
-
-            // Login mit UserLoginService
-            boolean loginSuccess = UserLoginService.login(username, userPassword);
-            if (loginSuccess) {
-                System.out.println("Login erfolgreich! Willkommen, " + username + "!");
-            } else {
-                System.out.println("Login fehlgeschlagen! Überprüfen Sie Ihre Anmeldedaten.");
+                // Benutzer-Login
+                loginUser(scanner, connection);
             }
         } catch (SQLException e) {
             System.err.println("Fehler bei der Datenbankverbindung: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            // Scanner nach der Nutzung schließen
+            // Scanner schließen
             scanner.close();
+        }
+    }
+
+    // Methode zur Benutzerregistrierung
+    private static void registerUser(Scanner scanner, Connection connection) throws SQLException {
+        UserService userService = new UserService(connection);
+
+        System.out.println("=== Benutzer Registrierung ===");
+
+        System.out.print("Benutzernamen eingeben: ");
+        String username = scanner.nextLine().trim();
+
+        // Überprüfen, ob der Benutzer bereits existiert
+        if (userService.findUserByUsername(username) != null) {
+            System.out.println("Benutzername bereits vergeben. Bitte wähle einen anderen.");
+            return; // Beende den Registrierungsvorgang
+        }
+
+        System.out.print("Passwort eingeben: ");
+        String userPassword = scanner.nextLine();
+
+        // Passwort hashen
+        String passwordHash = BCryptHelper.hashPassword(userPassword);
+
+        // Benutzer speichern
+        User user = new User(username, passwordHash);
+        userService.saveUser(user);
+
+        System.out.println("Registrierung erfolgreich!");
+    }
+
+    // Methode für den Benutzer-Login
+    private static void loginUser(Scanner scanner, Connection connection) throws SQLException {
+        UserLoginService userLoginService = new UserLoginService();
+
+        System.out.println("=== Benutzer Login ===");
+
+        System.out.print("Benutzernamen eingeben: ");
+        String username = scanner.nextLine().trim();
+
+        System.out.print("Passwort eingeben: ");
+        String userPassword = scanner.nextLine();
+
+        // Login mit UserLoginService
+        boolean loginSuccess = userLoginService.login(username, userPassword);
+        if (loginSuccess) {
+            System.out.println("Login erfolgreich! Willkommen, " + username + "!");
+        } else {
+            System.out.println("Login fehlgeschlagen! Überprüfen Sie Ihre Anmeldedaten.");
         }
     }
 }
