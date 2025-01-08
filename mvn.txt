@@ -1,2 +1,0 @@
-mvn archetype:generate -DgroupId=org.smir -DartifactId=hallo-world -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false
-
