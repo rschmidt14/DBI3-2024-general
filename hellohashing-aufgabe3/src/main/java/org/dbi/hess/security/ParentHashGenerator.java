@@ -3,7 +3,6 @@ package org.dbi.hess.security;
 public class ParentHashGenerator implements HashGenerator
 {
     public String generatePlaygroundHash(String source) {
-        //something simpler than source.hashCode()
         return ""+source.length();
     }
 

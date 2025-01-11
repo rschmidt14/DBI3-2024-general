@@ -1,5 +1,6 @@
-/home/mario/github/dbi/hellohashing-aufgabe3/src/main/java/org/dbi/hess/HelloHashing.java
-/home/mario/github/dbi/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/CommonsHashGenerator.java
-/home/mario/github/dbi/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/GuavaHashGenerator.java
-/home/mario/github/dbi/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/HashGenerator.java
-/home/mario/github/dbi/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/ParentHashGenerator.java
+/home/mario/dev/java/DBI3-2024-general/hellohashing-aufgabe3/src/main/java/org/dbi/hess/ConnectionFactory.java
+/home/mario/dev/java/DBI3-2024-general/hellohashing-aufgabe3/src/main/java/org/dbi/hess/HelloHashing.java
+/home/mario/dev/java/DBI3-2024-general/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/CommonsHashGenerator.java
+/home/mario/dev/java/DBI3-2024-general/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/GuavaHashGenerator.java
+/home/mario/dev/java/DBI3-2024-general/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/HashGenerator.java
+/home/mario/dev/java/DBI3-2024-general/hellohashing-aufgabe3/src/main/java/org/dbi/hess/security/ParentHashGenerator.java
