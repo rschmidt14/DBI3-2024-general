@@ -1,4 +1,4 @@
-package org.dbi.smir.security;
+package org.dbi.Dizdarevic.security;
 
 import java.nio.charset.StandardCharsets;
 

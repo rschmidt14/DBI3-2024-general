@@ -1,9 +1,9 @@
-package org.dbi.smir;
+package org.dbi.Dizdarevic;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.dbi.smir.security.CommonsHashGenerator;
-import org.dbi.smir.security.GuavaHashGenerator;
+import org.dbi.Dizdarevic.security.CommonsHashGenerator;
+import org.dbi.Dizdarevic.security.GuavaHashGenerator;
 import org.junit.jupiter.api.Test;
 
 /**

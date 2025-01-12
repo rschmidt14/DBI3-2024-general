@@ -1,14 +1,14 @@
-package org.dbi.smir;
+package org.dbi.Dizdarevic;
 
 import java.awt.*;
 import java.util.Scanner;
 
-import org.dbi.smir.database.DatabaseService;
-import org.dbi.smir.database.LoginService;
-import org.dbi.smir.model.User;
-import org.dbi.smir.security.CommonsHashGenerator;
-import org.dbi.smir.security.GuavaHashGenerator;
-import org.dbi.smir.security.HashGenerator;
+import org.dbi.Dizdarevic.database.DatabaseService;
+import org.dbi.Dizdarevic.database.LoginService;
+import org.dbi.Dizdarevic.model.User;
+import org.dbi.Dizdarevic.security.CommonsHashGenerator;
+import org.dbi.Dizdarevic.security.GuavaHashGenerator;
+import org.dbi.Dizdarevic.security.HashGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

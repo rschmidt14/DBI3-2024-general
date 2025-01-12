@@ -1,7 +1,7 @@
-package org.dbi.smir.database;
-
-import org.dbi.smir.HelloHashing;
-import org.dbi.smir.model.User;
+package org.dbi.Dizdarevic.database;
+//Hello hashing namen aendern
+import org.dbi.Dizdarevic.HelloHashing;
+import org.dbi.Dizdarevic.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

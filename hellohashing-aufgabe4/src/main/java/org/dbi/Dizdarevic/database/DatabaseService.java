@@ -14,7 +14,8 @@ public class DatabaseService
     private static String CREATE_TABLE_USER =
         "CREATE TABLE IF NOT EXISTS hellojdbc.db_user ( username varchar, passwordHash varchar )";
     //todo - complete sql statement
-    private static String FIND_USERS = "select...";
+    private static String FIND_USERS = "SELECT username, passwordHash FROM hellojdbc.db_user WHERE username = '$1'";
+
     private static String INSERT_USER = "insert into hellojdbc.db_user values ('$1', '$2')";
 
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseService.class);
@@ -24,7 +25,7 @@ public class DatabaseService
 
     public void initializeDatabase()
     {
-        //todo: retrieve a database connection here
+        Connection con = ConnectionFactory.getConnection();
         try (Statement stmt = con.createStatement())
         {
             stmt.executeUpdate(CREATE_TABLE_USER);

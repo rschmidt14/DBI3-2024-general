@@ -1,4 +1,4 @@
-package org.dbi.smir.database;
+package org.dbi.Dizdarevic.database;
 
 import java.io.FileInputStream;
 import java.io.IOException;

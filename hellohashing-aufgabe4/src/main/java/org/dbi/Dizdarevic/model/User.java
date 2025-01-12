@@ -1,4 +1,4 @@
-package org.dbi.smir.model;
+package org.dbi.Dizdarevic.model;
 
 public class User
 {
