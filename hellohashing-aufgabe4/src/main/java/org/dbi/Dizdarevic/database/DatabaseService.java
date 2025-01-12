@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 import org.dbi.Dizdarevic.model.User;
 import org.slf4j.Logger;
@@ -12,11 +13,11 @@ import org.slf4j.LoggerFactory;
 public class DatabaseService
 {
     private static String CREATE_TABLE_USER =
-        "CREATE TABLE IF NOT EXISTS hellojdbc.db_user ( username varchar, passwordHash varchar )";
+        "CREATE TABLE IF NOT EXISTS db_user ( username varchar, passwordHash varchar )";
     //todo - complete sql statement CHECK
-    private static String FIND_USERS = "SELECT username, passwordHash FROM hellojdbc.db_user WHERE username = '$1'";
+    private static String FIND_USERS = "SELECT username, passwordHash FROM db_user WHERE username = '$1'";
 
-    private static String INSERT_USER = "insert into hellojdbc.db_user values ('$1', '$2')";
+    private static String INSERT_USER = "insert into db_user values ('$1', '$2')";
 
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseService.class);
 
@@ -66,22 +67,24 @@ public class DatabaseService
         return null;
     }
 
-    public void insertUser(User user)
-    {
-        Connection con = ConnectionFactory.getConnection();
-        //todo - something is wrong here
-        String insert_user = INSERT_USER.replace("$1", "username").replace("$2", "password");
-        try (Statement stmt = con.createStatement())
-        {
-            stmt.executeUpdate(insert_user);
-            con.commit();
-            con.close();
-        }
-        catch (
-            SQLException e)
-        {
-            LOG.error("SQL exception during user insertion; "+ user, e);
+    public void insertUser(User user) {
+        String insertUserSQL = "INSERT INTO db_user (username, passwordHash) VALUES (?, ?)";
+    
+        try (Connection con = ConnectionFactory.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(insertUserSQL)) {
+    
+            // Set the actual values for the placeholders
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getPasswordHash());
+    
+            // Execute the SQL query
+            pstmt.executeUpdate();
+            con.commit(); // Save changes to the database
+            System.out.println("User '" + user.getUsername() + "' registered successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error inserting user: " + user.getUsername());
+            e.printStackTrace();
         }
     }
-}
+}   
 
