@@ -15,7 +15,8 @@ public class DatabaseService
     private static String CREATE_TABLE_USER =
         "CREATE TABLE IF NOT EXISTS db_user ( username varchar, passwordHash varchar )";
     //todo - complete sql statement CHECK
-    private static String FIND_USERS = "SELECT username, passwordHash FROM db_user WHERE username = '$1'";
+    private static String FIND_USERS = "SELECT username, passwordHash FROM db_user WHERE username = ?";
+
 
     private static String INSERT_USER = "insert into db_user values ('$1', '$2')";
 
@@ -40,32 +41,28 @@ public class DatabaseService
         }
     }
 
-    public User findUserSingleResult(String userName)
-    {
-        Connection con = ConnectionFactory.getConnection();
-        try (Statement stmt = con.createStatement())
-        {
-            ResultSet resultSet = stmt.executeQuery(FIND_USERS);
-            while (resultSet.next())
-            {
-                String foundUserName = resultSet.getString("username");
-                if (userName.equals(foundUserName))
-                {
-                    String passwordHash = resultSet.getString("passwordHash");
-                    User foundUser = new User(userName);
-                    foundUser.setPasswordHash(passwordHash);
-                    return foundUser;
-                }
+    public User findUserSingleResult(String userName) {
+        try (Connection con = ConnectionFactory.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(FIND_USERS)) {
+    
+            pstmt.setString(1, userName);
+            ResultSet rs = pstmt.executeQuery();
+    
+            if (rs.next()) {
+                String foundUserName = rs.getString("username");
+                String passwordHash = rs.getString("passwordHash");
+    
+                User foundUser = new User(foundUserName);
+                foundUser.setPasswordHash(passwordHash);
+                return foundUser;
             }
-            resultSet.close();
-            con.close();
+        } catch (SQLException e) {
+            System.err.println("SQL exception during user lookup for username: " + userName);
+            e.printStackTrace();
         }
-        catch (SQLException e)
-        {
-            LOG.error("SQL exception when trying to find user: " + userName, e);
-        }
-        return null;
+        return null; // User not found
     }
+    
 
     public void insertUser(User user) {
         String insertUserSQL = "INSERT INTO db_user (username, passwordHash) VALUES (?, ?)";

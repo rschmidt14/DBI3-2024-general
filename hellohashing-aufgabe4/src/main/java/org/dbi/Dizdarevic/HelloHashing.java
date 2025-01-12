@@ -39,6 +39,7 @@ public class HelloHashing {
             String password = scanner.nextLine();
 
             User user = new User(userName, password);
+            
             if (!loginService.validateUser(user)) {
                 System.out.println("Invalid input. Exiting...");
                 System.exit(-1);

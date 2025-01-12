@@ -31,17 +31,24 @@ public class LoginService
         }
     }
 
-    public boolean loginUser(User user)
-    {
-        User foundUser = foundUser = databaseService.findUserSingleResult(user.getUsername());
-        if(foundUser != null && user.getPasswordHash().equals(foundUser.getPasswordHash())) {
-            LOG.info("User: "+user.getUsername()+" logged in");
-            return true;
+    public boolean loginUser(User user) {
+        User foundUser = databaseService.findUserSingleResult(user.getUsername());
+    
+        if (foundUser != null) {
+            System.out.println("Stored hash: " + foundUser.getPasswordHash());
+            System.out.println("Entered hash: " + user.getPasswordHash());
+    
+            if (user.getPasswordHash().equals(foundUser.getPasswordHash())) {
+                System.out.println("User: " + user.getUsername() + " logged in successfully.");
+                return true;
+            } else {
+                System.out.println("Hashes do not match. Login failed.");
+                return false;
+            }
         } else {
-            LOG.info("User: "+user.getUsername()+" login failed");
+            System.out.println("User not found: " + user.getUsername());
             return false;
         }
-
     }
 
     public boolean validateUser(User user) {
