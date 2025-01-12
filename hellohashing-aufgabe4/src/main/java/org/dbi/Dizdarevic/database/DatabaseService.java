@@ -13,7 +13,7 @@ public class DatabaseService
 {
     private static String CREATE_TABLE_USER =
         "CREATE TABLE IF NOT EXISTS hellojdbc.db_user ( username varchar, passwordHash varchar )";
-    //todo - complete sql statement
+    //todo - complete sql statement CHECK
     private static String FIND_USERS = "SELECT username, passwordHash FROM hellojdbc.db_user WHERE username = '$1'";
 
     private static String INSERT_USER = "insert into hellojdbc.db_user values ('$1', '$2')";
