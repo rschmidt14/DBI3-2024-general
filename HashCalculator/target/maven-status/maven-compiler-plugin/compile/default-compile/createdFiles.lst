@@ -1,0 +1,10 @@
+org\dbi\dbi_kursarbeit\ParentHashGenerator.class
+org\dbi\dbi_kursarbeit\HashGenerator.class
+org\dbi\dbi_kursarbeit\GuavaHashGenerator.class
+org\dbi\dbi_kursarbeit\Main.class
+org\dbi\dbi_kursarbeit\User.class
+org\dbi\dbi_kursarbeit\GuavaTest.class
+org\dbi\dbi_kursarbeit\HashCalculator.class
+org\dbi\dbi_kursarbeit\ConnectionFactory.class
+org\dbi\dbi_kursarbeit\CommonsHashGenerator.class
+org\dbi\dbi_kursarbeit\UserService.class
