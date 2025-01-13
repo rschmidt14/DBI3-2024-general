@@ -21,6 +21,7 @@ public class HelloHashingTest {
 
         String guava = (new GuavaHashGenerator()).generateSha256Hex("myPassword");
         String commons = (new CommonsHashGenerator()).generateSha256Hex("myPassword");
+
         //not sure that this is a correct unit test??!
         assertTrue(guava.equals(commons));
     }
