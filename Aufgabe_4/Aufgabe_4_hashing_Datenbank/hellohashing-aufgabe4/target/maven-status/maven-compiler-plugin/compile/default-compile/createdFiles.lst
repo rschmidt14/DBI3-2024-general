@@ -1,0 +1,5 @@
+org\dbi\somoza\HelloHashing.class
+org\dbi\somoza\security\ParentHashGenerator.class
+org\dbi\somoza\security\GuavaHashGenerator.class
+org\dbi\somoza\security\HashGenerator.class
+org\dbi\somoza\security\CommonsHashGenerator.class

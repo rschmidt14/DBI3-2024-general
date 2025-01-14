@@ -1,0 +1,5 @@
+# Created at 2024-11-28T21:02:27.437
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Studium\6ABIT\Datenbank\Projekt_DBI\DBI3-2024-general\Aufgabe_3\hellohashing-aufgabe3\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
