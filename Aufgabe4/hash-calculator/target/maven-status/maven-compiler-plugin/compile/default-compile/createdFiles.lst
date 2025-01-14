@@ -1,0 +1,5 @@
+org\dbi\Jani\HashCalculator.class
+org\dbi\Jani\UserService.class
+org\dbi\Jani\ConnectionFactory.class
+org\dbi\Jani\User.class
+org\dbi\Jani\HashGenerator.class
