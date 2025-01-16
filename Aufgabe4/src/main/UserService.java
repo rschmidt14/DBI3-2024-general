@@ -12,7 +12,6 @@ public class UserService {
             String sql = "INSERT INTO users (username, password_hash) VALUES ('" + username + "', '" + passwordHash + "')";
             stmt = conn.prepareStatement(sql);
             stmt.executeUpdate();
-            System.out.println("User registriert: " + username);
             return true;
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
@@ -39,14 +38,11 @@ public class UserService {
             rs = stmt.executeQuery(sql);
 
             if (rs.next()) {
-                System.out.println("User logged in: " + username);
                 return new User(rs.getString("username"), rs.getString("password_hash"));
             } else {
-                System.out.println("Invalid login: " + username);
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
             return null;
         } finally {
             try {
@@ -54,7 +50,7 @@ public class UserService {
                 if (stmt != null) stmt.close();
                 if (conn != null) conn.close();
             } catch (SQLException ex) {
-                System.out.println("Could not close resources!");
+                System.out.println("fail");
             }
         }
     }

@@ -20,54 +20,56 @@ public class Main {
 
 
         while (true) {
-            System.out.println("Wähle:");
-            System.out.println("[1] Registrieren");
-            System.out.println("[2] Login");
-            System.out.println("[3] Exit");
+            System.out.println("[1] Login");
+            System.out.println("[2] Registrieren");
+            System.out.println("[3] Beenden");
+            System.out.print("Wahl: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
                 case "1":
-                    register(scanner);
-                    break;
-                case "2":
                     login(scanner);
                     break;
+                case "2":
+                    register(scanner);
+                    break;
                 case "3":
-                    System.out.println("beenden");
                     return;
                 default:
-                    System.out.println("Invalid option. Try again.");
+                    System.out.println("Falsche Eingabe");
             }
         }
     }
 
-    private static void register(Scanner scanner) {
-        System.out.println("Enter username:");
-        String username = scanner.nextLine();
-        System.out.println("Enter password:");
-        String password = scanner.nextLine();
-        String passwordHash = hashPassword(password);
-
-        if (userService.registerUser(username, passwordHash)) {
-            System.out.println("Registration successful.");
-        } else {
-            System.out.println("Registration failed.");
-        }
-    }
 
     private static void login(Scanner scanner) {
-        System.out.println("Enter username:");
+        System.out.print("Username: ");
         String username = scanner.nextLine();
-        System.out.println("Enter password:");
+        System.out.print("Passwort: ");
         String password = scanner.nextLine();
         String passwordHash = hashPassword(password);
 
         User user = userService.loginUser(username, passwordHash);
         if (user != null) {
-            System.out.println("Login successful. Welcome, " + user.getUsername() + "!");
+            System.out.println("Erfolgreich");
         } else {
-            System.out.println("Invalid username or password.");
+            System.out.println("Falsche Eingabe");
+        }
+    }
+
+    private static void register(Scanner scanner) {
+        System.out.println("Nutzer registrieren");
+        System.out.println("-------------------");
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+        System.out.print("Passwort: ");
+        String password = scanner.nextLine();
+        String passwordHash = hashPassword(password);
+
+        if (userService.registerUser(username, passwordHash)) {
+            System.out.println("Nutzer erstellt");
+        } else {
+            System.out.println("fail");
         }
     }
 
@@ -85,7 +87,7 @@ public class Main {
 
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error hashing password", e);
+            throw new RuntimeException(e);
         }
     }
 }
