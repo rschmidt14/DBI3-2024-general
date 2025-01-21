@@ -77,3 +77,46 @@ insert into s values
 (10, 'Susi', 15, false, 1),
 (20, 'Sepp', 16, false, 3),
 (30, 'Max', 16, true, 3);
+
+select l.name, lv.fach from l join lv on l.id = lv.lid;
+
+select id, fach, stunden, jahr, lid from lv;
+select id as lid, name, ALTER, pendler from l;
+
+-- natural join durch umbenennung ermöglicht
+select name, fach from (select id as lid, name, ALTER, pendler from l) natural join lv;
+
+-- diesmal mit zuweisung
+with
+natural_l as (select id as lid, name, ALTER, pendler from l)
+--select name, fach from natural_l natural join lv where fach = 'E';
+-- semi join alle e-lehrer
+--select natural_l.* from natural_l natural join lv where fach = 'E';
+-- anti semi join alle nicht e-lehrer
+select * from l 
+except
+select natural_l.* from natural_l natural join lv where fach = 'E';
+
+-- datenbank für natural joins umbauen
+
+select * from l;
+alter table l rename id to lid;
+delete from l where name = 'Gabi';
+
+alter table s rename id to sid;
+alter table s rename kv to lid;
+
+-- alle e lehrer
+select name, fach from l natural join lv where fach = 'E';
+-- alle schüler mit den namenb ihrer klassenvorstände
+-- problem natural join nimmt jetzt als join bedingung: lid und name und alter und pendler 
+select s.name, l.name from s natural join l;
+
+select lid, name lname, alter lalter, pendler lpendler from l;
+
+-- umbenennung für natural join
+-- alternativ datenbank ändern und gleiche attribute verhindern (außer PK/FK beziehungen)
+with
+nl as (select lid, name as lname, alter as lalter, pendler as lpendler from l)
+select s.name, nl.lname from s natural join nl;
+-- die schuler die einen e lehrer als kv haben
