@@ -247,7 +247,8 @@ create table S (
   pendler bool
 );
 
-create table KV (
+create 
+ (
   sid int references s,
   lid int references l,
   constraint pk primary key (sid,lid)
@@ -289,6 +290,8 @@ select l.name, lv.fach, lv.jahr from l, lv, u
 where u.lid = l.id 
 and u.lvid = lv.id
 and lv.jahr = 2022;
+
+-- 
 
 -- mögliche paarungen für fahrgemeinschaften
 select * from l;
@@ -388,6 +391,18 @@ select * from kunde where alter <= all (select alter from segment where typ = 'K
 -- Hausübung
 -- Finde alle jungen Kunden (exkl Kinder) mit kreuzprodukt bzw join
 -- Finde alle jungen Kunden (exkl Kinder) mit kreuzprodukt mit subselect
+select name from kunde k join segment s on k.alter <= s.alter and s.typ = 'Jung'
+except
+select name from kunde k join segment s on k.alter <= s.alter and s.typ = 'Kind';
+
+select name from kunde k 
+join segment so on k.alter <= so.alter and so.typ = 'Jung'
+join segment su on k.alter > su.alter and su.typ = 'Kind';
+
+select k.name kname, k.alter kalter,  su.alter sualter, su.typ sutyp, so.alter soalter, so.typ sotyp from kunde k, segment su, segment so;
+
+
+
 
 
 

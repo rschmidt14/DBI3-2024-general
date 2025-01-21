@@ -251,4 +251,56 @@ insert into s values
 (20, 'Sepp', 16, false, 3),
 (30, 'Max', 16, true, 3);
 
+--
+select * from lv;
+select * from l;
+
+select distinct name from l join lv on l.id = lv.lid where fach = 'E';
+select * from l join lv on l.id = lv.lid;
+
+select distinct s.name from l 
+join lv on l.id = lv.lid 
+join s on s.kv = l.id
+where fach = 'E';
+
+select * from (select id from l) as l2 join lv on l2.id = lv.lid; 
+
+-- unkorreliert
+select s.name from s where kv in (
+  select id from l where id in (select lid from lv where lv.fach = 'E'
+  )
+);
+
+select * from s;
+-- korreliert mit exists
+select id from s where exists (
+  select * from l where l.id = s.kv
+);
+
+select id from s where exists (
+  select * from l where l.id = s.kv and exists (
+    select * from lv where l.id = lv.lid)  
+);
+
+select id from s where exists (
+  select * from l where l.id = s.kv and exists (
+    select * from lv where l.id = lv.lid and fach = 'E')  
+);
+
+select * from lv;
+select * from l;
+
+-- alle lehrer die NUR englisch unterrichten, erwartung l.id = 2
+select * from l where 'E' = ALL (select fach from lv where l.id = lv.lid);
+
+-- alle lehrer die auch englisch unterrichten, erwartung l.id = 2
+select * from l where 'E' = any (select fach from lv where l.id = lv.lid);
+-- optional and l.id = lv.lid
+
+select * from lv;
+select name from l where 6 < (select sum(stunden) from lv where l.id = lv.lid);
+select * from l where l.id in (select lid from lv where fach = 'E' );
+
+
+
 
