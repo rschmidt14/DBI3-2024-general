@@ -1,4 +1,4 @@
-package org.dbi.smir.database;
+package org.dbi.kuea.database;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,9 +40,9 @@ public class ConnectionFactory
             LOG.info("Connection: " + con);
         }
         catch(SQLException e)
-            {
-                LOG.error("Cannot establish connection", e);
-            }
-            return con;
+        {
+            LOG.error("Cannot establish connection", e);
         }
+        return con;
     }
+}
