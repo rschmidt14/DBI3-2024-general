@@ -19,7 +19,8 @@ public class HelloHashing {
     public static void main(String[] args) {
 
         HashGenerator hashGenerator = new GuavaHashGenerator();
-        boolean register = false;
+        boolean register = true;
+       // boolean register = false;
         if (args != null && args.length == 1 && args[0].equalsIgnoreCase("Register")) {
             //todo: change register flag here
         } else if (args != null && args.length > 0) {
