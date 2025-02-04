@@ -1,0 +1,10 @@
+org/dbi/Manta_Maka/GuavaHashGenerator.class
+org/dbi/Manta_Maka/CommonsHashGenerator.class
+org/dbi/Manta_Maka/HashGenerator.class
+org/dbi/Manta_Maka/User.class
+org/dbi/Manta_Maka/ParentHashGenerator.class
+org/dbi/Manta_Maka/HelloHashing.class
+org/dbi/Manta_Maka/UserService.class
+org/dbi/Manta_Maka/ConnectionFactory.class
+org/dbi/Manta_Maka/UserLoginService.class
+org/dbi/Manta_Maka/BCryptHelper.class
