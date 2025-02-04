@@ -107,3 +107,39 @@ insert into s values
 (10, 'Susi', 15, false, 1),
 (20, 'Sepp', 16, false, 3),
 (30, 'Max', 16, true, 3);
+
+-- alle lehrer (name), die fächer unterrichten, mit den fächern (fach, stunden, jahr)
+select l.name, lv.fach, lv.stunden, lv.jahr from l inner join lv on lv.lid = l.id;
+-- alle lehrer (!) (name), mit den fächern, die sie unterrichten
+select l.name, lv.fach, lv.stunden, lv.jahr from l left outer join lv on lv.lid = l.id;
+select l.name, lv.fach, lv.stunden, lv.jahr from l right outer join lv on lv.lid = l.id;
+select l.name, lv.fach, lv.stunden, lv.jahr from l join lv on lv.lid = l.id;
+
+-- wo ist der unterschied?
+select l.name, lv.fach, lv.stunden, lv.jahr from l left outer join lv on lv.lid = l.id and fach = 'E';
+select l.name, lv.fach, lv.stunden, lv.jahr from l left outer join lv on lv.lid = l.id where fach = 'E';
+
+insert into s values (40, 'Erni', 15, true, null);
+
+-- alle lehrer (!), alle schüler (!), mit lvs und kvs
+select l.name, lv.fach, lv.stunden, lv.jahr from l left outer join lv on lv.lid = l.id;
+select s.name, l.name, lv.fach, lv.stunden, lv.jahr from l 
+  left outer join lv on lv.lid = l.id
+  --full outer join s on s.kv = l.id; -- alle lehrer und schüler
+  --right outer join s on s.kv = l.id; -- keine lehrer die nicht kv sind
+  left outer join s on s.kv = l.id;  -- keine schüler die keinen kv haben
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
