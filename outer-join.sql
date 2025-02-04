@@ -129,6 +129,7 @@ select s.name, l.name, lv.fach, lv.stunden, lv.jahr from l
   --right outer join s on s.kv = l.id; -- keine lehrer die nicht kv sind
   left outer join s on s.kv = l.id;  -- keine schüler die keinen kv haben
  
+  
 
 
 
