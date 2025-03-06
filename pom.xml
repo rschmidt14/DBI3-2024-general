@@ -64,11 +64,9 @@
             </goals>
             <configuration>
               <archive>
-                <manifest>
-                  <mainClass>
-                    put.your.main.class.Here
-                  </mainClass>
-                </manifest>
+                  <manifestEntries>
+                    <Main-Class>org.dbi.hess.HelloHashing</Main-Class>  <!-- Replace with your main class -->
+                </manifestEntries>
               </archive>
               <descriptorRefs>
                 <descriptorRef>jar-with-dependencies</descriptorRef>

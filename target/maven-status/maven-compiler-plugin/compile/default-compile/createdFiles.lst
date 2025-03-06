@@ -1,6 +1,8 @@
 org/dbi/hess/HelloHashing.class
-org/dbi/hess/security/GuavaHashGenerator.class
 org/dbi/hess/security/HashGenerator.class
-org/dbi/hess/security/ParentHashGenerator.class
 org/dbi/hess/ConnectionFactory.class
+org/dbi/hess/UserService.class
 org/dbi/hess/security/CommonsHashGenerator.class
+org/dbi/hess/security/GuavaHashGenerator.class
+org/dbi/hess/security/ParentHashGenerator.class
+org/dbi/hess/User.class
