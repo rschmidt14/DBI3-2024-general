@@ -17,26 +17,26 @@ public class UserService {
     // Methode zum Speichern eines Benutzers
     public void saveUser(User user) throws SQLException {
         // SICHERER Code
-        /*String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+        String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPasswordHash());
             statement.executeUpdate();
-        }*/
+        }
         // UNSICHERER Code
-        String sql = "INSERT INTO users (username, password_hash) VALUES ('"
+        /*String sql = "INSERT INTO users (username, password_hash) VALUES ('"
                 + user.getUsername() + "', '"
                 + user.getPasswordHash() + "')";
 
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
         }
-        // Ende UNSICHERE Methode
+        */// Ende UNSICHERE Methode
     }
 
     // Methode zum Abrufen eines Benutzers anhand des Benutzernamens
     // Sicher
-    /*public User findUserByUsername(String username) throws SQLException {
+    public User findUserByUsername(String username) throws SQLException {
         String sql = "SELECT username, password_hash FROM users WHERE username = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
@@ -47,10 +47,11 @@ public class UserService {
                 }
             }
         }
-        return null; */// Benutzer nicht gefunden
+        return null; // Benutzer nicht gefunden
+    }
 
     // Unsichere Methode — bereit für SQL-Injection!
-    public User findUserByUsername(String username) throws SQLException {
+    /*public User findUserByUsername(String username) throws SQLException {
         String sql = "SELECT username, password_hash FROM users WHERE username = '" + username + "'";
 
         try (Statement statement = connection.createStatement()) {
@@ -66,5 +67,5 @@ public class UserService {
             }
         }
         return null; // Benutzer nicht gefunden
-    }
+    }*/
 }
