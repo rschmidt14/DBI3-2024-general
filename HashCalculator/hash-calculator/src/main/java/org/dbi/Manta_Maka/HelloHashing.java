@@ -30,7 +30,7 @@ public class HelloHashing {
         String passwordHash = hashGenerator.generateSha256Hex(password);
 
         // Hashing
-        System.out.println("Hash is: " + passwordHash);
+        //System.out.println("Hash is: " + passwordHash);
 
         // Verbindung zur Datenbank herstellen
         try (Connection connection = ConnectionFactory.getConnection()) {
@@ -41,7 +41,7 @@ public class HelloHashing {
                     registerUser(userName, passwordHash, connection);
                 } else {
                     // Benutzer-Login
-                    loginUser(scanner, connection);
+                    loginUser(userName, passwordHash, connection);
                 }
             }
         } catch (SQLException e) {
@@ -66,24 +66,17 @@ public class HelloHashing {
         // Benutzer speichern
         User user = new User(username, passwordHash);
         userService.saveUser(user);
+        System.out.println("Password Hash on Register: " + passwordHash);
 
         System.out.println("Registrierung erfolgreich!");
     }
 
     // Methode für den Benutzer-Login
-    private static void loginUser(Scanner scanner, Connection connection) throws SQLException {
+    private static void loginUser(String username, String passwordHash, Connection connection) throws SQLException {
         UserLoginService userLoginService = new UserLoginService();
 
-        System.out.println("=== Benutzer Login ===");
-
-        System.out.print("Benutzernamen eingeben: ");
-        String username = scanner.nextLine().trim();
-
-        System.out.print("Passwort eingeben: ");
-        String userPassword = scanner.nextLine();
-
         // Login mit UserLoginService
-        boolean loginSuccess = userLoginService.login(username, userPassword);
+        boolean loginSuccess = userLoginService.login(username, passwordHash);
         if (loginSuccess) {
             System.out.println("Login erfolgreich! Willkommen, " + username + "!");
         } else {

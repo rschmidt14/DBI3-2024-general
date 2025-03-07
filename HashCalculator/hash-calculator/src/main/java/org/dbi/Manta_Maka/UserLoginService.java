@@ -14,8 +14,9 @@ public class UserLoginService {
                 return false; // Benutzer nicht gefunden
             }
 
-            // Passwort überprüfen
-            return BCryptHelper.checkPassword(password, user.getPasswordHash());
+            // Vergleich Passwort
+            return user.getPasswordHash().equals(password);
+
         } catch (Exception e) {
             e.printStackTrace();
             return false; // Fehler beim Login

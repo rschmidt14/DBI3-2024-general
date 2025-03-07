@@ -35,7 +35,8 @@ public class UserService {
     }
 
     // Methode zum Abrufen eines Benutzers anhand des Benutzernamens
-    public User findUserByUsername(String username) throws SQLException {
+    // Sicher
+    /*public User findUserByUsername(String username) throws SQLException {
         String sql = "SELECT username, password_hash FROM users WHERE username = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
@@ -43,6 +44,24 @@ public class UserService {
                 if (resultSet.next()) {
                     String passwordHash = resultSet.getString("password_hash");
                     return new User(username, passwordHash);
+                }
+            }
+        }
+        return null; */// Benutzer nicht gefunden
+
+    // Unsichere Methode — bereit für SQL-Injection!
+    public User findUserByUsername(String username) throws SQLException {
+        String sql = "SELECT username, password_hash FROM users WHERE username = '" + username + "'";
+
+        try (Statement statement = connection.createStatement()) {
+            boolean hasResultSet = statement.execute(sql);
+
+            if (hasResultSet) {
+                try (ResultSet resultSet = statement.getResultSet()) {
+                    if (resultSet.next()) {
+                        String passwordHash = resultSet.getString("password_hash");
+                        return new User(username, passwordHash);
+                    }
                 }
             }
         }
