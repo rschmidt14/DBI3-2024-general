@@ -6,7 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/dbidemo";
+    //private static final String URL = "jdbc:postgresql://localhost:9988/dbidemo";
+    private static final String URL = "jdbc:postgresql://localhost:9988/dbidemo?allowMultiQueries=true";
     private static final String USER = "dbi";
     private static final String PASSWORD = "password";
 

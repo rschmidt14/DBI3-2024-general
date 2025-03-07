@@ -1,6 +1,7 @@
 package org.dbi.Manta_Maka;
 
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,12 +16,22 @@ public class UserService {
 
     // Methode zum Speichern eines Benutzers
     public void saveUser(User user) throws SQLException {
-        String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+        // SICHERER Code
+        /*String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPasswordHash());
             statement.executeUpdate();
+        }*/
+        // UNSICHERER Code
+        String sql = "INSERT INTO users (username, password_hash) VALUES ('"
+                + user.getUsername() + "', '"
+                + user.getPasswordHash() + "')";
+
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate(sql);
         }
+        // Ende UNSICHERE Methode
     }
 
     // Methode zum Abrufen eines Benutzers anhand des Benutzernamens
