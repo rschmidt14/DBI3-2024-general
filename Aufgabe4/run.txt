@@ -1,0 +1,3 @@
+mvn clean package
+mvn clean install
+java -jar target/hello-hashing-1.0-SNAPSHOT-jar-with-dependencies.jar Register
