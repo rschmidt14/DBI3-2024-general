@@ -116,3 +116,23 @@ having(
 );
 
 
+with 
+llv as (select * from lv join l on lv.lid = l.id where lv.jahr = 2022)
+--
+select name, sum(stunden) from llv llv1 group by name, lid 
+having(
+  (select count(*) from llv llv2 where llv1.lid = llv2.lid and fach in ('E')) > 0 and 
+  (select count(*) from llv llv2 where llv1.lid = llv2.lid and fach in ('D')) > 0
+);
+
+-- geht nicht!
+with 
+llv as (select * from lv join l on lv.lid = l.id where lv.jahr = 2022)
+--
+select name, sum(stunden) from llv llv1  
+where exists 
+  (select * from llv llv2 where llv1.lid = llv2.lid and fach in ('E')) 
+and exists
+  (select count(*) from llv llv3 where llv1.lid = llv3.lid and fach in ('D'))
+group by name, lid;
+
